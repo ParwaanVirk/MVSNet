@@ -49,7 +49,7 @@ tf.app.flags.DEFINE_integer('batch_size', 1,
 
 # params for config
 tf.app.flags.DEFINE_string('pretrained_model_ckpt_path', 
-                           './MODEL_FOLDER/model.ckpt',
+                           '/data/dtu/tf_model/mvsnet_arxiv/model.ckpt',
                            """Path to restore the model.""")
 tf.app.flags.DEFINE_integer('ckpt_step', 70000,
                             """ckpt step.""")
@@ -97,6 +97,7 @@ class MVSGenerator:
                         cam[1][3][1] = cam[1][3][1] * FLAGS.interval_scale
                         images.append(image)
                         cams.append(cam)
+                print(cams)
 
                 # determine a proper scale to resize input 
                 h_scale = float(FLAGS.max_h) / images[0].shape[0]
